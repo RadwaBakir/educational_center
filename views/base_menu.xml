@@ -1,0 +1,25 @@
+<odoo>
+    <menuitem
+            id="educational_center_root_menu"
+            name="Educational Center"
+            web_icon="educational_center,static/description/icon.png"
+    />
+    <menuitem
+            id="teacher_menu"
+            name="Teacher"
+            parent="educational_center_root_menu"
+            action="teacher_action"
+    />
+    <menuitem
+            id="student_menu"
+            name="Students"
+            parent="educational_center_root_menu"
+            action="student_action"
+    />
+    <menuitem
+            id="course_menu"
+            name="Courses"
+            parent="educational_center_root_menu"
+            action="course_action"
+            />
+</odoo>
