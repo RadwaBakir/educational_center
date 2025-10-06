@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Course(models.Model):
@@ -9,7 +9,10 @@ class Course(models.Model):
     description = fields.Text()
     teacher_id = fields.Many2one('teacher', required=True)
     student_ids = fields.Many2many('student')
+    student_count = fields.Integer(compute="_compute_student_count")
 
-    _sql_constraints = [
-        ('unique_email', 'unique("email")', 'Email already used')
-    ]
+
+    @api.depends('student_ids')
+    def _compute_student_count(self):
+        for rec in self:
+            rec.student_count = len(rec.student_ids)
